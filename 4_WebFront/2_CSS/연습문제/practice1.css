@@ -1,0 +1,129 @@
+div{
+}
+
+.container-1>div{
+    width: 50px;
+    height: 30px;
+    float:right;
+    text-align: center;
+    line-height: 30px;
+}
+
+.container-1>div:last-child{
+    width:70px;
+}
+
+.container-1>div:nth-child(4){
+    width:70px;
+}
+
+.container-1>div:nth-child(3){
+    background-image: url(../../images/lab.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.container-1>div:nth-child(2){
+    background-image: url(../../images/dotBox.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.container-1>div:first-child{
+    background-image: url(https://lh3.googleusercontent.com/ogw/AF2bZyhDjJUFE3pS2JnjWzCOBtYJHD4iS0wi9p7Lpuwd-cR5cWE=s32-c-mo);
+    border-radius: 50%;
+}
+
+
+
+.container-2>div{
+    width: 60%;
+    height: 300px;
+    clear:both;
+    background-image: url(../../images/googleLogo.png);
+    background-repeat: no-repeat;
+    background-position:bottom;
+    background-size: contain;
+    margin:auto;
+}
+
+
+
+.container-3{
+    height: 50px;
+    border: 1px solid #7c7c7c;
+    border-radius: 2em;
+    margin-bottom: 40px;
+}
+
+.container-3>div>div{
+    width: 50px;
+    height: 50px;
+}
+
+.container-3>div>div:first-child{
+    background-image: url(../../images/searchIcon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    float:left;
+    border-radius: 50%;
+    margin-left:10px;
+}
+
+.container-3>div>div:nth-child(2){
+    float:left;
+    width: 50%;
+    line-height: 50px;
+}
+
+.container-3>div>div>input{
+    border-width: 0;
+    font-size: 20px;
+}
+
+.container-3>div>div:nth-child(3){
+    background-image: url(../../images/googleLens.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    float:right;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-size: cover;
+}
+
+.container-3>div>div:last-child{
+    background-image: url(../../images/googleMic.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    float:right;
+    border-radius: 50%;
+    margin-right: 20px;
+    background-size: cover;
+}
+
+
+
+.container-4{
+    height: 500px;
+}
+
+.container-4>.row-1>div>div{
+    width:50px;
+    height:50px;
+}
+
+.row-1>div{
+    width: 25%;
+    height: 50px;
+    float:left;
+}
+
+.circle{
+    background-color: #eee;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    float: left;
+}
