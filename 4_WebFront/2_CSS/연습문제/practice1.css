@@ -186,3 +186,30 @@ div{
     line-height: 40px;
     text-align: center;
 }
+
+.setting{
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #949494;
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    border-radius: 2em;
+    text-align: center;
+    color:rgb(2, 112, 255);
+    font-size: 13px;
+    padding-right:5px;
+}
+
+.setting>div{
+    width: 20px;
+    height: 20px;
+    background-image: url(../../images/setting-icon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    float:left;
+    border-radius: 50%;
+    margin-top:5px;
+    margin-left:10px;
+}
