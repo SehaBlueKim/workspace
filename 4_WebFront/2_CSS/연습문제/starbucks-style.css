@@ -1,0 +1,130 @@
+*{box-sizing: border-box;}
+
+section{border 1px solid black;}
+
+main {
+    width: 1140px;
+    border: 1px solid black;
+    height: 750px;
+}
+
+/* 헤더 */
+#main-logo{
+    width: 90px;
+}
+
+header{
+    height: 15%;
+    display: flex;
+    background-color:rgb(245, 240, 229);
+}
+
+header>section:first-child{
+    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header>section:last-child{
+    flex-basis: 75%;
+}
+
+header div{
+    flex-basis:20%;
+}
+
+header>section:last-child>section:first-child{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header>section:last-child>section:first-child>a{
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header nav{
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav>a{
+    color: rgb(36, 36, 36);
+    text-decoration: none;
+    padding: 15px;
+    font-size: 15px;
+}
+
+header span{
+    color: #cfcfcf;
+    padding: 15px;
+}
+
+#search-btn{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor:pointer;
+    margin-left:15px;
+}
+
+
+
+/* 컨텐츠 */
+.content{
+    height: 49%;
+    background-image: url(../../images/starbucks-content.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/* 풋터 */
+footer{
+    height:36%;
+    background-color: rgb(24, 70, 54);
+}
+
+footer>section{
+    display: flex;
+}
+
+.line-notice {
+    height: 20%;
+}
+
+.line-notice>section:first-child{
+    flex-basis:50%;
+}
+
+.line-notice>section:last-child{
+    flex-basis:50%;
+}
+
+.reward {
+   height: 80%;
+}
+
+#reward-logo{
+    width: 100px;
+}
+.reward>section:first-child{
+    flex-basis: 28%;
+}
+
+.reward>section:last-child{
+    flex-basis: 72%;
+}
+
+.reward>section:last-child>section:first-child{
+    flex-basis: 50%;
+}
+
+section {border: 1px solid red;}
+
