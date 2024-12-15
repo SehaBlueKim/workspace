@@ -1,4 +1,3 @@
-
 main {
     width: 1140px;
     height: 750px;
@@ -117,12 +116,30 @@ footer>section{
 
 .line-notice-left>button:nth-child(3){
     cursor:pointer;
-    border-radius: 2em;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    height: 23px;
 }
 
 .line-notice-right{
     background-color: white;
     flex-basis:50%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.line-notice-right>span:nth-child(1){
+    margin-right: 50px;
+}
+
+.line-notice-right>button:nth-child(2){
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 200%;
+    height: 25px;
 }
 
 .reward {
@@ -130,7 +147,7 @@ footer>section{
 }
 
 .reward-logo{
-    width: 25%;
+    width: 22%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -152,10 +169,10 @@ footer>section{
 }
 
 .reward-cont-top-left{
-    width: 75%;
+    width: 78%;
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
 }
 
 .reward-cont-top-left>span:first-child{
@@ -183,16 +200,17 @@ footer>section{
     text-align: center;
     border-radius: 5px;
     padding: 5px;
-    margin: 5px;
+    margin-right: 5px;
+    font-size: 14px;
 }
 
 .reward-cont-top-right>div:last-child>div:last-child{
     width:45%;
-    border: 1px solid white;
+    border: 2px solid white;
     text-align: center;
     border-radius: 5px;
     padding: 5px;
-    margin: 5px;
+    font-size: 14px;
 }
 
 .reward-cont-top>span:first-child{
@@ -208,9 +226,10 @@ footer>section{
 }
 
 .reward-cont-bottom-left{
-    width: 75%;
+    width: 78%;
     height: 100%;
     font-size: 14px;
+    
 }
 
 .reward-cont-bottom-right{
@@ -218,8 +237,9 @@ footer>section{
     border: 1px solid white;
     text-align: center;
     border-radius: 5px;
+    font-size: 14px;
 }
 
 
-section {border  1px solid red;}
-div{border  1px solid blue;}
+section {border : 1px solid red;}
+div{border  :1px solid blue;}
