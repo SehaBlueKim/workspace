@@ -12,6 +12,9 @@ header{
     height: 15%;
     display: flex;
     background-color:rgb(245, 240, 229);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 header>section:first-child{
@@ -78,6 +81,79 @@ header span{
     background-image: url(../../images/starbucks-content.png);
     background-repeat: no-repeat;
     background-size: 100%;
+    position: relative;
+}
+
+.content>div{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 120px;
+    left: 175px;
+    text-align: center;
+}
+
+.content>button{
+    height: 40px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0px 20px;
+    position: absolute;
+    top: 210px;
+    left: 196px;
+    transition-duration: 0.5s;
+}
+
+.content>button:hover{
+    background-color : white;
+    color: red;
+    text-decoration: underline;
+}
+
+.content>img:nth-child(3){
+    width:130px;
+    position: absolute;
+    left: 360px;
+    top: 60px;
+}
+
+.content>img:nth-child(4){
+    width:130px;
+    position: absolute;
+    left: 450px;
+    top: 130px;
+}
+
+.content>img:nth-child(5){
+    width:130px;
+    position: absolute;
+    left: 550px;
+    top: 180px;
+}
+
+
+.content>img:nth-child(6){
+    width:130px;
+    position: absolute;
+    left: 670px;
+    top: 130px;
+}
+
+.content>img:nth-child(7){
+    width:130px;
+    position: absolute;
+    left: 770px;
+    top: 80px;
+}
+
+.content>img:nth-child(8){
+    position: fixed;
+    top: 150px;
+    right: 10px;
 }
 
 /* 풋터 */
@@ -158,8 +234,12 @@ footer>section{
 }
 
 .reward-cont{
-    flex-basis: 70%;
+    flex-basis: 75%;
     color: white;
+}
+
+.reward-blank{
+
 }
 
 .reward-cont-top{
@@ -169,7 +249,7 @@ footer>section{
 }
 
 .reward-cont-top-left{
-    width: 78%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -222,24 +302,25 @@ footer>section{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .reward-cont-bottom-left{
-    width: 78%;
+    width: 75%;
     height: 100%;
     font-size: 14px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .reward-cont-bottom-right{
     width: 25%;
-    border: 1px solid white;
+    height: 30px;
+    border: 2px solid white;
     text-align: center;
     border-radius: 5px;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-
-section {border : 1px solid red;}
-div{border  :1px solid blue;}
