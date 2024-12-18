@@ -32,20 +32,21 @@
                     <tr>
                         <td>이름</td>
                         <td><input type="text" id="name"></td>
-                        <td></td>
+                        <td><span id="nameCheck"></span></td>
                     </tr>
 
                     <tr>
                         <td>성별</td>
-                        <td>남<input type="radio" name="gender" value="male">
-                            여<input type="radio" name="gender" value="female">
+                        <td>
+                            남<input type="radio" name="gender" value = "male" class="radio">
+                            여<input type="radio" name="gender" value = "female" class="radio">
                         </td>
                         <td></td>
                     </tr>
 
                     <tr>
                         <td>전화번호</td>
-                        <td><input type="text"></td>
+                        <td><input type="tel" id="phone"></td>
                         <td></td>
                     </tr>
 
@@ -57,7 +58,10 @@
 
                     <tr>
                         <td></td>
-                        <td><button>초기화</button><button>회원가입</button></td>
+                        <td>
+                            <button>초기화</button>
+                            <button onclick="validate()">회원가입</button>
+                        </td>
                         <td></td>
                     </tr>
                 </table>

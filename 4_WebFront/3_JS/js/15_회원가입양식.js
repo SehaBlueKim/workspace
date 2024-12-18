@@ -58,11 +58,16 @@ document.getElementById("pwCheck").addEventListener("keyup", function(){
 
 */
 
-document.getElementById("pwCheck").addEventListener("keyup", function(){
+const pwMatch = document.getElementById("pwMatch");
 
-    const pwMatch = document.getElementById("pwMatch");
+document.getElementById("pw").addEventListener("keyup", function(){
 
-    if(document.getElementById("pw").value == this.value){
+    if(this.value == ''){
+        pwMatch.innerText = '';
+        return;
+    }
+
+    if(this.value == document.getElementById("pwCheck").value){
         pwMatch.innerText = "비밀번호 일치";
         pwMatch.style.color = "green";
     }else{
@@ -71,13 +76,14 @@ document.getElementById("pwCheck").addEventListener("keyup", function(){
     }
 })
 
-document.getElementById("pw").addEventListener("keyup", function(){
-
-    if(this.value == ''){
-        document.getElementById("pwMatch").innerText = '';
+document.getElementById("pwCheck").addEventListener("keyup", function(){
+    
+    if(document.getElementById("pw").value == ''){
+        pwMatch.innerText = '';
+        return;
     }
 
-    if(this.value == document.getElementById("pwCheck").value){
+    if(this.value == document.getElementById("pw").value){
         pwMatch.innerText = "비밀번호 일치";
         pwMatch.style.color = "green";
     }else{
@@ -97,8 +103,20 @@ document.getElementById("pw").addEventListener("keyup", function(){
 */
 
 document.getElementById("name").addEventListener("keyup", function(){
-    const name = /^[가-힣]{2,5}$/;
-    
+    const regExp = /^[가-힣]{2,5}$/;
+    const nameCheck = document.getElementById("nameCheck");
+
+    if(this.value == '') {
+        nameCheck.innerText = '';
+    }
+
+    if(regExp.test(this.value)) {
+        nameCheck.innerText = "정상입력";
+        nameCheck.style.color = "green";
+    }else{
+        nameCheck.innerText = "한글만 입력하세요";
+        nameCheck.style.color = "red";
+    }
 })
 
 // -----------------------------------------------------------
@@ -111,16 +129,31 @@ function validate(){
     /*- 성별이 선택되지 않은 경우 
     "성별을 선택해주세요." 경고창(==대화상자) 출력 후
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.*/
+    const radio = document.querySelectorAll(".radio")
 
-    
+    let isChecked = false;
+
+    for(let i=0; i<radio.length; i++){
+        if(radio[i].checked){
+            isChecked = true;
+            break;
+        }
+    }
+
+    if(!isChecked){
+        alert("성별을 선택해주세요.");
+        return false;
+    }
 
     /*
     - 전화번호 형식이 올바르지 않을 경우 
     "전화번호의 형식이 올바르지 않습니다" 경고창(==대화상자) 출력 후
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.
     */
+    const regExp = /^\d{3}-\d{4}-\d{4}$/;
 
-
-
-
+    if(!regExp.test(document.getElementById("phone").value)){
+            alert("전화번호의 형식이 올바르지 않습니다")
+            return false;
+    }
 }
