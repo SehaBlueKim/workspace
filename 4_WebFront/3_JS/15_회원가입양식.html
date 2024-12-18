@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_회원가입양식</title>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>회원 가입 양식</legend>
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td><input type="text" id="idCheck"></td>
+                        <td><button>중복확인</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" id="pw"></td>
+                        <td><span id="pwMatch"></span></td>
+                    </tr>
+
+                    <tr>
+                        <td>비밀번호 확인</td>
+                        <td><input type="password" id="pwCheck"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="text" id="name"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>성별</td>
+                        <td>남<input type="radio" name="gender" value="male">
+                            여<input type="radio" name="gender" value="female">
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>전화번호</td>
+                        <td><input type="text"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>이메일</td>
+                        <td><input type="text"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td><button>초기화</button><button>회원가입</button></td>
+                        <td></td>
+                    </tr>
+                </table>
+        </fieldset>
+
+    </form>
+
+    <script src="js/15_회원가입양식.js"></script>
+</body>
+
+</html>

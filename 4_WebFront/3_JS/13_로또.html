@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 생성기</title>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #container{
+            width: 400px;
+            height: 130px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #container>div{
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            border-radius: 2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #createLotto{
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <button id="createLotto">로또 번호 생성</button>
+
+    <!-- 내가 쓴 코드
+    <script>
+       
+        document.getElementById("createLotto").addEventListener("click", function(){
+            
+            // 로또 번호를 저장할 배열 선언
+            let arr = new Array(6);
+
+            // 로또 번호 생성시 1~45 난수 생성
+            for(let i=0; i<arr.length; i++){
+                arr[i] = Math.floor( Math.random() * 45 + 1 );
+
+                // 로또 번호 중복 X
+                for(let x=0; x<i; x++){
+                    if(arr[i] == arr[x]){
+                        i--;
+                        continue;
+                    }
+                }
+            }
+
+            // lotto에 저장된 난수 오름차순 정렬
+            arr.sort(function(a,b) {return a-b;});
+
+            // div에 난수 출력
+            const div = document.querySelectorAll("#container > div")
+
+            for(let i=0; i<div.length; i++){
+                div[i].innerText = arr[i];
+            }
+        })
+    </script>
+    -->
+
+    <!-- 선생님 코드 -->
+    <script>
+
+        document.getElementById("createLotto").addEventListener("click", function(){
+
+            // #container의 자식 div 6개 선택
+            const numbers = document.querySelectorAll("#container > div");
+
+            // 로또 번호를 저장할 배열 선언
+            const lotto = [];
+
+            while(lotto.length <= 5){ // lotto 배열에 저장된 값이 6개가 안되면 반복
+                // 1~45 난수 생성
+                const ran = Math.floor(Math.random() * 45 + 1);
+
+                // 생성된 난수가 배열에 있는지 검사
+                if(lotto.indexOf(ran) == -1){ // 중복 X
+                    // 배열에 난수 추가
+                    lotto.push(ran);
+                }
+            }
+            // lotto에 저장된 난수 오름차순 정렬
+            lotto.sort( function(a,b){return a-b;})
+    
+            // numbers의 인덱스별로 lotto 인덱스에 저장된 값 출력
+            for(let i=0; i<lotto.length; i++ ){
+                numbers[i].innerText = lotto[i];
+            }
+        })
+    </script>
+
+</body>
+
+</html>
