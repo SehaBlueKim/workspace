@@ -10,9 +10,9 @@
 - 형식이 일치하지 않은 경우
 입력창의 배경색을 red, 글자색을 white 로 변경*/
 
-document.getElementById("idCheck").addEventListener("keyup", function(){
+document.getElementById("inputId").addEventListener("keyup", function(){
     
-    const id = /^[a-z]([a-z]|[A-Z]|[0-9]|-|_){5,13}$/;
+    const regExp = /^[a-z](\w|\d|-|_){5,13}$/;
 
     if(this.value == ''){
         this.style.backgroundColor = '';
@@ -20,7 +20,7 @@ document.getElementById("idCheck").addEventListener("keyup", function(){
         return;
     }
 
-    if(id.test(this.value)){
+    if(regExp.test(this.value)){
         this.style.backgroundColor = "green";
     }else{
         this.style.backgroundColor = "red";
@@ -37,11 +37,11 @@ document.getElementById("idCheck").addEventListener("keyup", function(){
 focus 를 "비밀번호" 입력창으로 이동
 */
 
-document.getElementById("pwCheck").addEventListener("keyup", function(){
-    if(document.getElementById("pw").value == ''){
+document.getElementById("inputPwConfirm").addEventListener("keyup", function(){
+    if(document.getElementById("inputPw").value == ''){
         alert("비밀번호를 입력해주세요");
         this.value = '';
-        document.getElementById("pw").focus();
+        document.getElementById("inputPw").focus();
     }
 })
 
@@ -60,35 +60,40 @@ document.getElementById("pwCheck").addEventListener("keyup", function(){
 
 const pwMatch = document.getElementById("pwMatch");
 
-document.getElementById("pw").addEventListener("keyup", function(){
+document.getElementById("inputPw").addEventListener("keyup", function(){
+    
+        if(this.value == ''){
+            pwMatch.innerText = '';
+            return;
+        }
 
-    if(this.value == ''){
-        pwMatch.innerText = '';
-        return;
-    }
-
-    if(this.value == document.getElementById("pwCheck").value){
-        pwMatch.innerText = "비밀번호 일치";
-        pwMatch.style.color = "green";
-    }else{
-        pwMatch.innerText = "비밀번호가 불일치";
-        pwMatch.style.color = "red";
-    }
+        if(this.value == document.getElementById("inputPwConfirm").value){
+            pwMatch.innerText = "비밀번호 일치";
+            pwMatch.classList.add("confirm");
+            pwMatch.classList.remove("error");
+        }else{
+            pwMatch.innerText = "비밀번호가 불일치";
+            pwMatch.classList.add("error");
+            pwMatch.classList.remove("confirm");
+        }
 })
 
-document.getElementById("pwCheck").addEventListener("keyup", function(){
+document.getElementById("inputPwConfirm").addEventListener("keyup", function(){
     
-    if(document.getElementById("pw").value == ''){
+    if(document.getElementById("inputPw").value == ''){
         pwMatch.innerText = '';
         return;
     }
 
-    if(this.value == document.getElementById("pw").value){
+    if(this.value == document.getElementById("inputPw").value){
         pwMatch.innerText = "비밀번호 일치";
-        pwMatch.style.color = "green";
+        pwMatch.classList.add("confirm");
+        pwMatch.classList.remove("error");
+
     }else{
         pwMatch.innerText = "비밀번호가 불일치";
-        pwMatch.style.color = "red";
+        pwMatch.classList.add("error");
+        pwMatch.classList.remove("confirm");
     }
 })
 
@@ -102,12 +107,13 @@ document.getElementById("pwCheck").addEventListener("keyup", function(){
 "이름" 입력창 오른쪽에 "한글만 입력하세요" 글자를 빨간색으로 출력.
 */
 
-document.getElementById("name").addEventListener("keyup", function(){
+document.getElementById("inputName").addEventListener("keyup", function(){
     const regExp = /^[가-힣]{2,5}$/;
     const nameCheck = document.getElementById("nameCheck");
 
-    if(this.value == '') {
-        nameCheck.innerText = '';
+    if(this.value == "") {
+        nameCheck.innerText = "";
+        return;
     }
 
     if(regExp.test(this.value)) {
@@ -129,18 +135,17 @@ function validate(){
     /*- 성별이 선택되지 않은 경우 
     "성별을 선택해주세요." 경고창(==대화상자) 출력 후
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.*/
-    const radio = document.querySelectorAll(".radio")
+    const male = document.getElementById("male");
+    const female = document.getElementById("female");
 
-    let isChecked = false;
-
-    for(let i=0; i<radio.length; i++){
+   /*  for(let i=0; i<radio.length; i++){
         if(radio[i].checked){
             isChecked = true;
             break;
         }
-    }
+    } */
 
-    if(!isChecked){
+    if(!male.checked && !female.checked){
         alert("성별을 선택해주세요.");
         return false;
     }
@@ -150,10 +155,17 @@ function validate(){
     "전화번호의 형식이 올바르지 않습니다" 경고창(==대화상자) 출력 후
     submit 기본 이벤트를 제거하여 회원가입이 진행되지 않게 함.
     */
-    const regExp = /^\d{3}-\d{4}-\d{4}$/;
+    const regExp = /^[0]\d{1,2}-\d{3,4}-\d{4}$/;
 
-    if(!regExp.test(document.getElementById("phone").value)){
+    if(!regExp.test(document.getElementById("inputTel").value)){
             alert("전화번호의 형식이 올바르지 않습니다")
             return false;
     }
 }
+
+// 초기화
+document.getElementById("resetBtn").addEventListener("click", function(){
+    document.getElementById("inputId").style.backgroundColor = '';
+    document.getElementById("pwMatch").innerText = '';
+    document.getElementById("nameCheck").innerText = '';
+})
