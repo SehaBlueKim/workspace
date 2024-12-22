@@ -24,7 +24,7 @@ document.getElementById("btn1").addEventListener("click", function(){
         },
 
         information : function(){
-            console.log(brand); // 객체 외부 변수 호출
+            console.log(brand); // this 미작성 시 객체 외부 변수 호출
 
             // 같은 객체 내부의 다른 속성을 호출하고 싶은 경우
             // 현재 객체를 뜻하는 this를 붙여줘야 함!
@@ -86,7 +86,7 @@ document.getElementById("btn2").addEventListener("click", function(){
     console.log(std2);
     console.log(std3);
 
-    // 생성자 함수는 언제 사용하는걸까? : 같은 형태의 객체가 다수 필요한 경우에 사용한다
+    // 생성자 함수는 언제 사용하는걸까? : 같은 형태의 객체가 많이많이 필요한 경우에 사용한다
     // (코드 길이 감소, 재사용성 증가)
 
     console.log(std1.name);

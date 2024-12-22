@@ -45,7 +45,7 @@ document.getElementById("btn2").addEventListener("click", function(){
     const list = document.getElementById("test").children;
     console.log(list);
 
-    // #test의 첫 번쨰 자식 요소
+    // #test의 첫 번째 자식 요소
     document.getElementById("test").firstElementChild.style.backgroundColor = "blue";
 
     // #test의 마지막 자식 요소

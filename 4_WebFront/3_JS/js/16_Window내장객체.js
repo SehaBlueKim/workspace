@@ -13,10 +13,10 @@ let interval; // setInterval을 저장하기 위한 전역 변수
 
 function clockFn(){
     const clock = document.getElementById("clock");
-    clock.innerText = currentTime(); // 현재 시간을 화면에 출력하는 함수
+    clock.innerText = currentTime(); // 현재 시간을 화면에 출력하는 함수 호출
 
     // 지연 시간마다 반복(첫 반복도 지연시간 후에 시작)
-    // -> 페이지 로딩 후 1초 후부터 반복(지연 -> 함수 -> 지연 -> 함수)
+    // -> 페이지 로딩 후 1초 후부터 반복(지연 -> 함수 실행 -> 지연 -> 함수 실행)
     interval = setInterval(function(){
         clock.innerText = currentTime();
     }, 1000);
@@ -24,7 +24,7 @@ function clockFn(){
 
 // 현재 시간을 문자열로 반환하는 함수
 function currentTime(){
-    const now = new Date();
+    const now = new Date(); // Date() 현재 시간을 알려줌
 
     let hour = now.getHours();
     let min = now.getMinutes();
@@ -70,6 +70,7 @@ document.getElementById("startBtn").addEventListener("click", function(){
         let sec = Math.floor(count / 100 % 60);
         let ms = count % 100;
 
+        // 한자리인 경우
         if(min < 10) min = "0" + min;
         if(sec < 10) sec = "0" + sec;
         if(ms < 10) ms = "0" + ms;
@@ -112,7 +113,7 @@ open3.addEventListener("click", function(){
     // 주모니터(main)에서만 적용된다.
 })
 
-// 팝업창이 부모창의 값 get/set
+// 팝업창이 부모창의 값을 get/set
 const open4 = document.getElementById("open4");
 open4.addEventListener("click", function(){
     window.open("popup.html", "_blank", "width=500, height=300");

@@ -62,11 +62,8 @@ const pwMatch = document.getElementById("pwMatch");
 
 document.getElementById("inputPw").addEventListener("keyup", function(){
     
-        if(this.value == ''){
-            pwMatch.innerText = '';
-            return;
-        }
-
+    if(inputPwConfirm.value != ''){
+    
         if(this.value == document.getElementById("inputPwConfirm").value){
             pwMatch.innerText = "비밀번호 일치";
             pwMatch.classList.add("confirm");
@@ -76,24 +73,28 @@ document.getElementById("inputPw").addEventListener("keyup", function(){
             pwMatch.classList.add("error");
             pwMatch.classList.remove("confirm");
         }
+    }
+    
+    if(this.value == '' && inputPwConfirm.value == ''){
+        pwMatch.innerText = '';
+    }
 })
 
 document.getElementById("inputPwConfirm").addEventListener("keyup", function(){
     
-    if(document.getElementById("inputPw").value == ''){
-        pwMatch.innerText = '';
-        return;
-    }
-
+    
     if(this.value == document.getElementById("inputPw").value){
         pwMatch.innerText = "비밀번호 일치";
         pwMatch.classList.add("confirm");
         pwMatch.classList.remove("error");
-
     }else{
         pwMatch.innerText = "비밀번호가 불일치";
         pwMatch.classList.add("error");
         pwMatch.classList.remove("confirm");
+    }
+    
+    if(this.value == '' && inputPwConfirm.value == ''){
+        pwMatch.innerText = '';
     }
 })
 
@@ -111,17 +112,16 @@ document.getElementById("inputName").addEventListener("keyup", function(){
     const regExp = /^[가-힣]{2,5}$/;
     const nameCheck = document.getElementById("nameCheck");
 
-    if(this.value == "") {
-        nameCheck.innerText = "";
-        return;
-    }
-
     if(regExp.test(this.value)) {
         nameCheck.innerText = "정상입력";
         nameCheck.style.color = "green";
     }else{
         nameCheck.innerText = "한글만 입력하세요";
         nameCheck.style.color = "red";
+    }
+    
+    if(this.value == "") {
+        nameCheck.innerText = "";
     }
 })
 
