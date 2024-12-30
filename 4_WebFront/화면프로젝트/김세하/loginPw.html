@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="stylesheet" href="css/loginPw.css">
+</head>
+
+<body>
+    <main>
+        <div class="login-top">
+            <div class="login-top-left">
+                <img src="img/googleG.png">
+                <p>시작하기</p>
+            </div>
+
+            <div class="login-top-right">
+                <div>
+                    <input type="password" id="PwInput" placeholder=" 비밀번호 입력">
+                    <div></div>
+                    <button type="button" id="nextBtn">다음</button>
+                    <button type="button" id="anotherWay">다른 방법 시도</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="login-bottom">
+            <div>
+                <select name="language" id="language">
+                    <option value="kor">한국어</option>
+                    <option value="eng">English</option>
+                    <option value="jp">日本語</option>
+                    <option value="ch">中國語</option>
+                </select>
+            </div>
+            <div></div>
+            <div>도움말</div>
+            <div>개인정보처리방침</div>
+            <div>약관</div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("nextBtn").addEventListener("click", function(e){
+            if(document.getElementById("PwInput").value == ''){
+                alert("비밀번호를 입력하세요.")
+                e.preventDefault();
+            }else{
+                location.href = 'main.html';
+            }
+        })
+    </script>
+</body>
+
+</html>
