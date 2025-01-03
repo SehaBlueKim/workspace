@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시맨틱태그</title>
+    <title>KH커뮤니티</title>
     <link rel="stylesheet" href="/community/resources/css/main-style.css">
     <script src="https://kit.fontawesome.com/d7dbfff85e.js" crossorigin="anonymous"></script>
 </head>
@@ -16,38 +16,18 @@
 <body>
         
     <main>
+        <!-- header -->
+        
+        <!-- 내부 접근 가능한 절대 경로 -->
+        <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <header>
+        <!-- jsp:include 태그
+            -> 다른 jsp 파일의 내용을 해당 위치에 포함시킴
             
-            <!-- 클릭 시 메인 페이지로 이동 -->
-            <section>
-                <a href="#">
-                    <img src="resources/images/KH-logo.jpg" id="main-logo">
-                </a>
-            </section>
-
-            <!-- 검색창 -->
-            <section>
-                <div class="search-area">
-                    
-                    <!-- form 내부 input 태그 값을 서버 또는 페이지로 전달 -->
-                    <form action="#" name="search-form">
-
-                        <!-- fieldset : form 태그 내부에서 input을 종류별로 묶는 용도로 많이 사용 -->
-                        <fieldset>
-                            <!-- form 태그 내부 input은 name 속성이 존재해야 값 전달 가능함! -->
-                            <input type="text" name="query" id="query"
-                                    autocomplete="off" placeholder="검색어를 입력해주세요">
-    
-                            <button id="search-btn" class="fa-solid fa-magnifying-glass"></button>
-                        </fieldset>
-                    </form>
-
-                </div>
-            </section>
-
-            <section></section>
-        </header>
+            * 경로 작성 시
+            외부 요청 주소 X(인터넷 주소, 최상위 : /community),
+            내부 접근 경로 O(파일 경로,   최상위 : /webapp)
+        -->
 
         <!-- 네비게이터 -->
         <nav>
@@ -82,8 +62,8 @@
 		                <form action="member/login" name="login-form" method="post">
 		                    <!-- 아이디/비밀번호/로그인 버튼 영역 -->
 		                    <fieldset id="id-pw-area">
-		                        <section>
-		                            <input type="text" placeholder="아이디" name="inputEmail">
+		                        <section>														<%-- 현재 페이지 쿠키 중 "saveId"의 내용(value) 출력 --%>
+		                            <input type="text" placeholder="아이디" name="inputEmail" value="${cookie.saveId.value}">
 		                            <input type="password" placeholder="비밀번호" name="inputPw">
 		                        </section>
 		                        <section>
@@ -93,13 +73,27 @@
 		        
 		                    <!-- 회원가입 / ID/PW 찾기 영역 -->
 		                    <article id="signup-find-area">
-		                        <a href="#">회원가입</a>
+                                <!-- <a href="/community/WEB-INF/views/member/signUp.jsp">회원가입</a> -->
+                                <!-- WEB-INF 폴더는 외부로부터 직접적으로 요청할 수 없는 폴더 
+                                     왜? 중요한 코드(자바, sql, 설정관련)가 위치하는 폴더이기 때문에
+                                         외부로부터 접근을 차단함
+
+                                    -> 대신 Servlet을 이용해 내부 접근(forward)은 가능하다
+                                -->
+
+                                <a href="/community/member/signUp">회원가입</a>
 		                        <span>|</span>
 		                        <a href="#">ID/PW 찾기</a>
 		                    </article>
 		                    
+		                    <!-- 쿠키에 saveId가 있는 경우 -->
+		                    <c:if test="${!empty cookie.saveId.value}">
+		                    	<!-- chk 변수 생성(기본값인 page scope) -->
+		                    	<c:set var="chk" value="checked"/>
+		                    </c:if>
+		                    
 		                    <label>
-		                    	<input type="checkbox">아이디 저장
+		                    	<input type="checkbox" name="saveId" ${chk}>아이디 저장
 		                    </label>
 		                </form>
             		</c:when>
@@ -133,18 +127,17 @@
     </main>
     
     <!-- 풋터 -->
-    <footer>
-        <div>Copyright &copy; KH Information Educational Institute G-Class</div>
-        <article>
-            <a href="#">프로젝트 소개</a>
-                <span>|</span>
-            <a href="#">이용약관</a>
-                <span>|</span>
-            <a href="#">개인정보처리방침</a>
-                <span>|</span>
-            <a href="#">고객센터</a>
-        </article>
-    </footer>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	
+	<!-- session에 message 속성이 존재하는 경우 alert 창으로 해당 내용 출력 -->    
+    <c:if test="${!empty sessionScope.message}">
+		<script>
+			alert("${message}")
+		</script>
+		
+		<!-- message 1회 출력 후 session 제거 -->
+		<c:remove var="message" scope="session"/>
+    </c:if>
 </body>
 
 </html>
