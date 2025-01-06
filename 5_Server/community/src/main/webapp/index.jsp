@@ -109,8 +109,8 @@
                             <!-- 회원 정보 + 로그아웃 버튼 -->
                             <div class="my-info">
                                 <div>
-                                    <a href="#" id="nickname">${loginMember.memberNickname}</a>
-                                    <a href="/community/member/logout" id="logout-btn">로그아웃</a>
+                                    <a href="${contextPath}/member/myPage/info" id="nickname">${loginMember.memberNickname}</a>
+                                    <a href="${contextPath}/member/logout" id="logout-btn">로그아웃</a>
                                 </div>
                                 <p>
                                     ${loginMember.memberEmail}
@@ -120,7 +120,6 @@
             		</c:otherwise>
             	</c:choose>
             	
-            	
             </section>
         </section>
 
@@ -129,15 +128,6 @@
     <!-- 풋터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
-	<!-- session에 message 속성이 존재하는 경우 alert 창으로 해당 내용 출력 -->    
-    <c:if test="${!empty sessionScope.message}">
-		<script>
-			alert("${message}")
-		</script>
-		
-		<!-- message 1회 출력 후 session 제거 -->
-		<c:remove var="message" scope="session"/>
-    </c:if>
 </body>
 
 </html>

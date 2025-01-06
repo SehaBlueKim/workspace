@@ -95,4 +95,30 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	/** 내정보수정 DAO
+	 * @param mem
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int updateMember(Member mem, Connection conn) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("update");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem.getMemberNickname());
+			pstmt.setString(2, mem.getMemberTel());
+			pstmt.setString(3, mem.getMemberAddress());
+			pstmt.setInt(4, mem.getMemberNo());
+			
+			result = pstmt.executeUpdate();
+			
+		}finally{
+			close(pstmt);
+		}
+		return result;
+	}
 }

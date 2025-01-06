@@ -15,4 +15,14 @@
             <span>|</span>
         <a href="#">고객센터</a>
     </article>
+    
+    <!-- session에 message 속성이 존재하는 경우 alert 창으로 해당 내용 출력 -->    
+    <c:if test="${!empty sessionScope.message}">
+		<script>
+			alert("${message}")
+		</script>
+		
+		<!-- message 1회 출력 후 session 제거 -->
+		<c:remove var="message" scope="session"/>
+    </c:if>
 </footer>
