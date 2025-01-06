@@ -163,6 +163,7 @@ BEGIN
         );
     END LOOP;
 END;
+/
 
 -- 공지사항 게시판 조회
 SELECT COUNT(*) FROM BOARD WHERE BOARD_CD = 1;
@@ -172,3 +173,18 @@ SELECT COUNT(*) FROM BOARD WHERE BOARD_CD = 1;
 
 -- 질문 게시판 조회
 SELECT COUNT(*) FROM BOARD WHERE BOARD_CD = 1;
+
+COMMIT;
+
+-------------------------------------------------------------------------------
+
+UPDATE MEMBER SET MEMBER_ADDR = '04540,,서울특별시 강남구 테헤란로 14길 6,,5층';
+
+SELECT * FROM MEMBER;
+
+-- 회원 정보 수정
+UPDATE MEMBER SET 
+	MEMBER_NICK =?, 
+	MEMBER_TEL=?, 
+	MEMBER_ADDR=?
+WHERE MEMBER_NO =?;
