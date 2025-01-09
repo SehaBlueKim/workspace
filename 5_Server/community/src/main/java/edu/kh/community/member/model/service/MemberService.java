@@ -67,4 +67,43 @@ public class MemberService {
 		return result;
 	}
 
+	/** 비밀번호 변경
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changePw(String currentPw, String newPw, int memberNo) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.changePw(currentPw, newPw, memberNo, conn);
+		
+		if(result != 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 회원 탈퇴
+	 * @param memberPw
+	 * @param memberNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int secession(String memberPw, int memberNo) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.secession(memberPw, memberNo, conn);
+		
+		if(result != 0) commit(conn);
+		else			rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
 }

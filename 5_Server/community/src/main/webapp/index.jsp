@@ -59,7 +59,7 @@
 	            		<!-- 현재 위치 : /community/index.jsp -->
 		            	<!-- 목표 위치 : /community/member/login -->
 		            	
-		                <form action="member/login" name="login-form" method="post">
+		                <form action="member/login" name="login-form" method="post" onsubmit="return loginValidate()">
 		                    <!-- 아이디/비밀번호/로그인 버튼 영역 -->
 		                    <fieldset id="id-pw-area">
 		                        <section>														<%-- 현재 페이지 쿠키 중 "saveId"의 내용(value) 출력 --%>
@@ -127,7 +127,9 @@
     
     <!-- 풋터 -->
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-	
+
+    <!-- main.js 연결 -->
+	<script src="${contextPath}/resources/js/main.js"></script>
 </body>
 
 </html>

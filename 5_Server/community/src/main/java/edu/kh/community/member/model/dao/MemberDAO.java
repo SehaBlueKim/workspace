@@ -121,4 +121,56 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	/** 비밀번호 변경
+	 * @param currentPw
+	 * @param newPw
+	 * @param memberNo
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int changePw(String currentPw, String newPw, int memberNo, Connection conn) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("changePw");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, newPw);
+			pstmt.setInt(2, memberNo);
+			pstmt.setString(3, currentPw);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally{
+			close(pstmt);
+		}
+		return result;
+	}
+
+	/** 회원 탈퇴
+	 * @param memberPw
+	 * @param memberNo
+	 * @param conn
+	 * @return result
+	 * @throws Exception
+	 */
+	public int secession(String memberPw, int memberNo, Connection conn) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberPw);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		}finally{
+			close(pstmt);
+		}
+		return result;
+	}
 }
