@@ -23,17 +23,6 @@
 
         <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-        <!-- 네비게이터 -->
-        <nav>
-            <ul>
-                <li><a href="#">공지사항</a></li>
-                <li><a href="#">자유게시판</a></li>
-                <li><a href="#">질문게시판</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">1:1 문의</a></li>
-            </ul>
-        </nav>
-
         <!-- 마이페이지 - 내정보 -->
         <section class="myPage-content">
             
