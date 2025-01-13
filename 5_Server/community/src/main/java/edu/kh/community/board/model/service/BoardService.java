@@ -9,9 +9,12 @@ import java.util.Map;
 
 import edu.kh.community.board.model.dao.BoardDAO;
 import edu.kh.community.board.model.dto.Board;
+import edu.kh.community.board.model.dto.BoardDetail;
+import edu.kh.community.board.model.dto.BoardImage;
 import edu.kh.community.board.model.dto.Pagination;
 
 public class BoardService {
+	
 	private BoardDAO dao = new BoardDAO();
 
 	/** 게시글 목록 조회
@@ -48,5 +51,30 @@ public class BoardService {
 		
 		// 7. 결과 반환
 		return map;
+	}
+
+	/** 게시글 상세조회
+	 * @param boardNo
+	 * @return
+	 * @throws Exception
+	 */
+	public BoardDetail selectBoardDetail(int boardNo) throws Exception {
+			
+		Connection conn = getConnection();
+		
+		// 1) 게시글(Board 테이블) 관련 내용만 조회
+		BoardDetail detail = dao.selectBoardDetail(boardNo, conn);
+		
+		if(detail != null){ // 게시글 상세 조회 결과가 있을 경우에만 이미지 조회
+			
+			// 2) 게시글에 첨부된 이미지(BOARD_IMG) 조회
+			List<BoardImage> imageList = dao.selectImageList(conn, boardNo);
+			
+			// 3) 조회된 imageList를 BoardDetail 객체에 세팅
+			detail.setImageList(imageList);
+		}
+		close(conn);
+		
+		return detail;
 	}
 }
